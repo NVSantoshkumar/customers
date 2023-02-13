@@ -11,7 +11,7 @@ const pool = new Pool({
 function excuteQuary() {
   pool.query("SELECT * from customer", (err, res) => {
     console.log(err, res);
-    console.log("hai");
+    console.log("github commited");
   });
 }
 
