@@ -1,11 +1,9 @@
 let express = require("express");
-let server = express();
-
 const calculate = require("./test1");
-
 const test2 = require("./test2");
+const dbClient = require("./db");
 
-const x = require("./db");
+let server = express();
 
 server.use(express.json());
 
@@ -21,5 +19,9 @@ server.post("/sum", function (req, res) {
   res.send(op.toString());
   test2.hello();
   test2.hai();
-  x();
+});
+
+server.post("/eq", async function (req, res) {
+  let rows = await dbClient.excuteQuary(req.body.insert);
+  res.send(rows);
 });

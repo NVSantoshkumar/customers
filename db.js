@@ -1,6 +1,6 @@
 const { Pool } = require("pg");
 
-const pool = new Pool({
+const client = new Pool({
   user: "",
   host: "localhost",
   database: "postgres",
@@ -8,11 +8,9 @@ const pool = new Pool({
   port: 5432,
 });
 
-function excuteQuary() {
-  pool.query("SELECT * from customer", (err, res) => {
-    console.log(err, res);
-    console.log("github commited");
-  });
+async function excuteQuary(s) {
+  const res = await client.query(s);
+  return res;
 }
 
-module.exports = excuteQuary;
+module.exports = { excuteQuary };
