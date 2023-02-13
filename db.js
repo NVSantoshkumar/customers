@@ -10,7 +10,7 @@ const client = new Pool({
 
 async function excuteQuary(s) {
   const res = await client.query(s);
-  return res;
+  return res.rows;
 }
 
 module.exports = { excuteQuary };
