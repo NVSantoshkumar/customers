@@ -22,10 +22,10 @@ server.post("/sum", function (req, res) {
 });
 
 server.post("/eq", async function (req, res) {
-  let result;
+  let result = [];
 
   for (let x of req.body.queryArray) {
-    result = await dbClient.excuteQuary(x);
+    result.push(await dbClient.excuteQuary(x));
   }
 
   res.send(result);
